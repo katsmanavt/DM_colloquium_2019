@@ -1,6 +1,7 @@
 Q-6
 
 //Cергеев
+—сылаетс€ на - LCM_NN_N, DIV_NN_N, TRANS_N_Z, MUL_ZZ_Z, SUB_ZZ_Z, RED_Q_Q
 
 ‘”Ќ ÷»я SUB_QQ_Q (q1, q2)
 	LCM := LCM_NN_N (q1.n, q2.n) // Ќќ  знаменателей
