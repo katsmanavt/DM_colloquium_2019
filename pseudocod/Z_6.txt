@@ -1,0 +1,28 @@
+// Шакарун
+// ABS_Z_N, ADD_NN_N, TRANS_N_Z, COM_NN_D, SUB_NN_N
+
+Функция ADD_ZZ_Z(целое z1, целое z2)
+	n1 := ABS_Z_N(z1)
+	n2 := ABS_Z_N(z2)
+	// проверка, совпадают ли знаки чисел
+	если z1.b = z2.b то
+		n := ADD_NN_N(n1, n2)
+		res := TRANS_N_Z(n)
+		res.b = z1.b
+	иначе
+		// если числа равны по модулю, то ответ 0
+		если COM_NN_D(n1, n2) = 0 то
+			res := целое(0)
+		// иначе вычитаем модули и определяем знак
+		иначе если COM_NN_D(n1, n2) = 2 то
+			n := SUB_NN_N(n1, n2)
+			res := TRANS_N_Z(n)
+			res.b := z1.b
+		иначе
+			n := SUB_NN_N(n2, n1)
+			res := TRANS_N_Z(n)
+			res.b := z2.b
+		ке
+	ке
+	вернуть res
+кф
