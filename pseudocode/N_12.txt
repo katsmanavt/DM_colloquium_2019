@@ -1,0 +1,8 @@
+// ???
+// Ссылается на DIV_NN_N, SUB_NN_N, MUL_NN_N
+
+функция MOD_NN_N (натуральные n1, n2)
+	div := DIV_NN_N(n1, n2)
+	mod := SUB_NN_N(n1, MUL_NN_N(div, n2))
+	вернуть mod
+кф

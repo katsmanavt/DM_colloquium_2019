@@ -1,0 +1,10 @@
+// Свинцова Людмила
+// Q-1
+// Сокращение дроби
+функция RED_Q_Q (дробь q1)
+	q = q1.копия
+	gcf := GCF_NN_N(ABS_Z_N(q.m), q.n)
+	q.m := DIV_ZZ_Z(q.m, gcf)
+	q.n := TRANS_Z_N(DIV_ZZ_Z(TRANS_N_Z(q.n), gcf))
+	возврат q
+кф

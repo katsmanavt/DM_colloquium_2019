@@ -1,0 +1,7 @@
+//N-14
+// Гусев Евгений
+// GCF_NN_N, MUL_NN_N, DIV_NN_N
+
+Фунция LCM_NN_N(натуральные a, b):
+    вернуть DIV_NN_N(MUL_NN_N(a, b), GCF_NN_N(a, b))
+кф
