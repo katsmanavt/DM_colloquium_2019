@@ -37,6 +37,7 @@ def ADD_1N_N (n1):
     n[i] += 1
     return n
 
+
 # N-4
 def ADD_NN_N (A, B):
     if A.n < B.n:
@@ -62,6 +63,7 @@ def ADD_NN_N (A, B):
         C.n += 1
 
     return C
+
 
 # N-5
 def SUB_NN_N (N1, N2):
@@ -136,12 +138,69 @@ def SUB_NDN_N(A, B, k):
         
         
 # N-10
+def DIV_NN_Dk(N1, N2):
+    A1 = N1.copy()
+    A2 = N2.copy()
+    t = COM_NN_D(A1, A2) # сравнение чисел
+    
+    if t == 1: # Если А1 < A2
+        A1, A2 = A2, A1
+    
+    k = A1.n - A2.n # Вычисление степени 10-ки
+    
+    A2 = MUL_NK_N(A2, k) # Умножение А2 на 10^k
+    
+    t = COM_NN_D(A1, A2) # Сравнение чисел
+    # Умножение А1 на 10 в случае, 
+    # когда после предыдущего шага A1 < A2
+    if t == 1:
+        A1 = MUL_NK_N(A1, 1)
+    
+    # Вычисление первой цифры деления А1 на А2
+    r = A1
+    while SUB_NN_N (r, A2) >= 0: # Пока (r-A2)>=0
+        r = SUB_NN_N(r, A2)
+        d += 1
+        
+    return d
+    
 
 # N-11
+def DIV_NN_N(A, B):
+    k = Natural()
+    if NZER_N_B(B): # Проверка делителя на 0
+        assert False
+    else:
+        cA = A.copy()
+        while COM_NN_D(cA, B) != 1:
+            cA = SUB_NN (cA, B) # Вычитаем из числа А число B
+            k = AD_1N_N(k)
+    return k
+
 
 # N-12
+def MOD_NN_N(n1, n2):
+    div = DIV_NN_N(n1, n2)
+    mod = SUB_NN_N(n1, MUL_NN_N(div, n2))
+    return mod
+
 
 # N-13
+def GCF_NN_N(n1, n2):
+    a = n1.copy()
+    b = n2.copy()
+    
+    while not(NZER_N_B(a) or NZER_N_B(b)):
+        if COM_NN_D(a, b) == 2:
+            a = MOD_NN_N(a, b)
+        else:
+            b - MOD_NN_N(b, a)
+    
+    if NZER_N_B(b):
+        return a
+    else:
+        return b
+
 
 # N-14
 def LCM_NN_N(a, b):
