@@ -1,6 +1,8 @@
+import debug
+
+
 def main():
-    print("Here will be some program")
-    input("\nPress Enter to continue...")
+    debug.main()
     
 
 if __name__ == "__main__":

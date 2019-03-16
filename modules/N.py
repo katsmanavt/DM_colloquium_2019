@@ -44,12 +44,16 @@ def ADD_NN_N (A, B):
     if A.n < B.n:
         A, B = B, A
     
-    C = Natural().pop()
+    C = Natural()
+    C.pop()
     k = 0
     i = 0
     
     while (i <= A.n):
-        C.append(B[i] + A[i] + k)
+        if i <= B.n:
+            C.append(B[i] + A[i] + k)
+        else:
+            C.append(A[i]+k)
         if C[i] >= 10:
             C[i] = C[i] - 10
             k = 1

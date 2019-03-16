@@ -37,6 +37,13 @@ def test_N_3():
     n = input_Natural("Введите число: ")
     n = ADD_1N_N(n)
     print_Natural(n)
+    
+
+def test_N_4():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("Сумма:")
+    print_Natural(ADD_NN_N(n1, n2))
 
 
 def main():
@@ -47,6 +54,7 @@ def main():
         print("1 - тест модуля N-1")
         print("2 = тест модуля N-2")
         print("3 = тест модуля N-3")
+        print("4 = тест модуля N-4")
         print("\n0 - выход")
         
         menu = int(input())
@@ -57,6 +65,8 @@ def main():
             test_N_2()
         elif menu == 3:
             test_N_3()
+        elif menu == 4:
+            test_N_4()
         elif menu == 0:
             pass
         else:
