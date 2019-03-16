@@ -5,7 +5,7 @@ class Natural (list):
     
     
     def copy(self):
-        return Natural(self.n, super().copy())
+        return Natural(self.n, *super().copy())
     
 
 class Integer(Natural):
@@ -15,7 +15,7 @@ class Integer(Natural):
     
     
     def copy(self):
-        return Integer(self.b, self.n, super().copy())
+        return Integer(self.b, self.n, *super().copy())
 
 
 class Rational:
@@ -35,4 +35,4 @@ class Polinomial (list):
         
     
     def copy(self):
-        return Polinomial(self.m, super().copy())
+        return Polinomial(self.m, *super().copy())

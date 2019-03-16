@@ -1,4 +1,4 @@
-from classes import *
+from modules.classes import *
 
 
 # N-1
@@ -7,7 +7,7 @@ def COM_NN_D(n1, n2):
     k = n2.n
     if m > k:
         res = 2
-    elif l > m:
+    elif k > m:
         res = 1
     else:
         i = m
@@ -30,6 +30,7 @@ def NZER_N_B (n):
 def ADD_1N_N (n1):
     n = n1.copy()
     
+    i = 0
     while n[i] == 9:
         n[i] = 0
         i += 1
