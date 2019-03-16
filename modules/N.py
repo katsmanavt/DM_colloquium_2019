@@ -1,0 +1,149 @@
+from classes import *
+
+
+# N-1
+def COM_NN_D(n1, n2):
+    m = n1.n
+    k = n2.n
+    if m > k:
+        res = 2
+    elif l > m:
+        res = 1
+    else:
+        i = m
+        while n1[i] == n2[i] and i >= 0:
+            i -= 1
+        if i < 0:
+            res = 0
+        elif n1[i] > n2[i]:
+            res = 2
+        else:
+            res = 1 
+    return 1
+
+# N-2
+def NZER_N_B (n):
+    return n.n == 0 and n[0] == 0
+
+
+# N-3
+def ADD_1N_N (n1):
+    n = n1.copy()
+    
+    while n[i] == 9:
+        n[i] = 0
+        i += 1
+    
+    n[i] += 1
+    return n
+
+# N-4
+def ADD_NN_N (A, B):
+    if A.n < B.n:
+        A, B = B, A
+    
+    C = Natural().pop()
+    k = 0
+    i = 0
+    
+    while (i <= A.n):
+        C.append(B[i] + A[i] + k)
+        if C[i] >= 10:
+            C[i] = C[i] - 10
+            k = 1
+        else:
+            k = 0
+        
+        i += 1
+    
+    C.n = A.n
+    if k == 1:
+        C.append(1)
+        C.n += 1
+
+    return C
+
+# N-5
+def SUB_NN_N (N1, N2):
+    n1 = N1.copy()
+    n2 = N2.copy()
+    n3 = Natural().pop()
+    if COM_NN_D(n1, n2) -- 2:
+        for i in range(n2.n):
+            if n1[i] > n2[i]:
+                n3.append(n1[i] - n2[i])
+            else:
+                n3.append(n1.A[i] + 10 - n2.A[i])
+                n1[i+1] -= 1
+    elif COM_NN_D(n1, n2) == 1:
+        assert False
+    
+    return n3
+
+
+# N-6
+def MUL_ND_N (B, d):
+    C = B.copy()
+    k = 0
+    i - 0
+    
+    while i <= B.n:
+        C[i] = C[i]*d + k
+        k = C[i] // 10
+        C[i] = C[i] % 10
+        i += 1
+    
+    if k > 0:
+        C.append(k)
+        C.n += 1
+    
+    return C
+
+
+# N-7
+def MUL_Nk_N(N1, k):
+    if N1.n != 0 or N1[0] != 0:
+        N = N1.copy().extend([0 for i in range(k)])
+        for i in range(n, 0, -1):
+            N[i+k] = N[i]
+        
+        for i in range(k):
+            N[i] = 0
+    else:
+        N = Natural()
+        
+    return N
+
+
+# N-8
+def MUL_NN_N(n1, n2):
+    n3 = Natural()
+    for i in range(n2.n):
+        n3 = ADD_NN_N(n3, MUL_Nk_N(MUL_ND_N(n1, n2[i]), i))
+    
+    return n3
+
+
+# N-9
+def SUB_NDN_N(A, B, k):
+    sub = MUL_ND_N(B, k)
+    # Проверка, что A действительно больше или равно B*k
+    if COM_NN_D(A, sub) != 1:
+        sub = SUB_NN_N(A, sub)
+        return sub
+    else:
+        assert False
+        
+        
+# N-10
+
+# N-11
+
+# N-12
+
+# N-13
+
+# N-14
+def LCM_NN_N(a, b):
+    return DIV_NN_N(MUL_NN_N(a, b), GCF_NN_N(a, b))
+           

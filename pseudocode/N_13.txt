@@ -1,9 +1,9 @@
-﻿// Смирнова
-N-13 (GCF_NN_N)
+// Смирнова
+// N-13 (GCF_NN_N)
 
-Ссылается на - NZER_N_B, COM_NN_D, MOD_NN_N
+// Ссылается на - NZER_N_B, COM_NN_D, MOD_NN_N
 
-алг N13
+// N13
 
 ФУНКЦИЯ GCF_NN_N (натуральные n1, n2)
 	a := n1.копия
