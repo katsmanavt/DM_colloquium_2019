@@ -19,7 +19,7 @@ def COM_NN_D(n1, n2):
             res = 2
         else:
             res = 1 
-    return 1
+    return res
 
 # N-2
 def NZER_N_B (n):
@@ -214,4 +214,3 @@ def GCF_NN_N(n1, n2):
 # N-14
 def LCM_NN_N(a, b):
     return DIV_NN_N(MUL_NN_N(a, b), GCF_NN_N(a, b))
-           

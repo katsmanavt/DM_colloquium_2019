@@ -26,7 +26,14 @@ def test_N_1():
     n1 = input_Natural("Введите первое число: ")
     n2 = input_Natural("Введите второе число: ")
     print("Результат: ")
-    print(COM_NN_D(n1, n2))
+    res = COM_NN_D(n1, n2)
+    if res == 2:
+        ans = "больше"
+    elif res == 0:
+        ans = "равно"
+    else:
+        ans = "меньше"
+    print(str(COM_NN_D(n1, n2))+" (n1 "+str(ans)+" n2)")
     
     
 def test_N_2():
@@ -134,8 +141,8 @@ def main():
         print("10 = тест модуля N-10")
         print("11 = тест модуля N-11")
         print("12 = тест модуля N-12")
-        print("12 = тест модуля N-13")
-        print("13 = тест модуля N-14")
+        print("13 = тест модуля N-13")
+        print("14 = тест модуля N-14")
         print("\n0 - выход")
         
         menu = int(input())
