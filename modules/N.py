@@ -31,7 +31,7 @@ def ADD_1N_N (n1):
     n = n1.copy()
     
     i = 0
-    while n[i] == 9:
+    while i <= n.n and n[i] == 9:
         n[i] = 0
         i += 1
     
