@@ -29,7 +29,6 @@ def NZER_N_B (n):
 # N-3
 def ADD_1N_N (n1):
     n = n1.copy()
-    
     i = 0
     while i <= n.n and n[i] == 9:
         n[i] = 0
@@ -76,13 +75,13 @@ def ADD_NN_N (A, B):
 def SUB_NN_N (N1, N2):
     n1 = N1.copy()
     n2 = N2.copy()
-    n3 = Natural().pop()
+    n3 = n2
     if COM_NN_D(n1, n2) == 2:
-        for i in range(n2.n):
-            if n1[i] > n2[i]:
-                n3.append(n1[i] - n2[i])
+        for i in range(n2.n+1):
+            if n1[i] >= n2[i]:
+                n3[i] = n1[i] - n2[i]
             else:
-                n3.append(n1.A[i] + 10 - n2.A[i])
+                n3[i] = n1[i] + 10 - n2[i]
                 n1[i+1] -= 1
     elif COM_NN_D(n1, n2) == 1:
         assert False
