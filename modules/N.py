@@ -35,6 +35,9 @@ def ADD_1N_N (n1):
         n[i] = 0
         i += 1
     
+    if i > n.n:
+        n.append(0)
+        n.n += 1
     n[i] += 1
     return n
 
@@ -59,7 +62,6 @@ def ADD_NN_N (A, B):
             k = 1
         else:
             k = 0
-        
         i += 1
     
     C.n = A.n
@@ -75,7 +77,7 @@ def SUB_NN_N (N1, N2):
     n1 = N1.copy()
     n2 = N2.copy()
     n3 = Natural().pop()
-    if COM_NN_D(n1, n2) -- 2:
+    if COM_NN_D(n1, n2) == 2:
         for i in range(n2.n):
             if n1[i] > n2[i]:
                 n3.append(n1[i] - n2[i])
@@ -92,7 +94,7 @@ def SUB_NN_N (N1, N2):
 def MUL_ND_N (B, d):
     C = B.copy()
     k = 0
-    i - 0
+    i = 0
     
     while i <= B.n:
         C[i] = C[i]*d + k
@@ -110,8 +112,10 @@ def MUL_ND_N (B, d):
 # N-7
 def MUL_Nk_N(N1, k):
     if N1.n != 0 or N1[0] != 0:
-        N = N1.copy().extend([0 for i in range(k)])
-        for i in range(n, 0, -1):
+        N = N1.copy()
+        N.extend([0 for i in range(k)])
+        N.n += k
+        for i in range(N.n-k, -1, -1):
             N[i+k] = N[i]
         
         for i in range(k):

@@ -1,7 +1,9 @@
 class Natural (list):
     def __init__ (self, n = 0, a1=0, *args):
         self.n = n
-        super().__init__(tuple([a1]+list(args)))
+        args = list(args)
+        args.insert(0, a1)
+        super().__init__(args)
     
     
     def copy(self):
@@ -11,7 +13,9 @@ class Natural (list):
 class Integer(Natural):
     def __init__(self, b = 0, n = 0, a1=0, *args):
         self.b = b
-        super().__init__(n, tuple([a1]+list(args)))
+        args = list(args)
+        args.insert(0, a1)
+        super().__init__(n, a1, *args)
     
     
     def copy(self):
@@ -31,7 +35,9 @@ class Rational:
 class Polinomial (list):
     def __init__ (self, m = 0, a1=0, *args):
         self.m = m
-        super().__init__(tuple([a1]+list(args)))
+        args = list(args)
+        args.insert(0, a1)
+        super().__init__(args)
         
     
     def copy(self):
