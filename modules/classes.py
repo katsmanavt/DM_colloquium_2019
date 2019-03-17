@@ -9,6 +9,14 @@ class Natural (list):
     def copy(self):
         return Natural(self.n, *super().copy())
     
+    
+    def del_0s(self):
+        i = self.n
+        while self[i] == 0:
+            self.pop()
+            self.n -= 1
+            i -= 1
+    
 
 class Integer(Natural):
     def __init__(self, b = 0, n = 0, a1=0, *args):
