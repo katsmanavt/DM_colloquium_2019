@@ -75,8 +75,9 @@ def ADD_NN_N (A, B):
 def SUB_NN_N (N1, N2):
     n1 = N1.copy()
     n2 = N2.copy()
-    n3 = n1
+    n3 = Natural()
     if COM_NN_D(n1, n2) == 2:
+        n3 = n1
         for i in range(n2.n+1):
             if n1[i] >= n2[i]:
                 n3[i] = n1[i] - n2[i]
@@ -133,7 +134,7 @@ def MUL_Nk_N(N1, k):
 # N-8
 def MUL_NN_N(n1, n2):
     n3 = Natural()
-    for i in range(n2.n):
+    for i in range(n2.n+1):
         n3 = ADD_NN_N(n3, MUL_Nk_N(MUL_ND_N(n1, n2[i]), i))
     
     return n3
@@ -193,7 +194,9 @@ def DIV_NN_N(A, B):
 
 
 # N-12
-def MOD_NN_N(n1, n2):
+def MOD_NN_N(N1, N2):
+    n1 = N1.copy()
+    n2 = N2.copy()
     div = DIV_NN_N(n1, n2)
     mod = SUB_NN_N(n1, MUL_NN_N(div, n2))
     return mod
@@ -208,7 +211,7 @@ def GCF_NN_N(n1, n2):
         if COM_NN_D(a, b) == 2:
             a = MOD_NN_N(a, b)
         else:
-            b - MOD_NN_N(b, a)
+            b = MOD_NN_N(b, a)
     
     if NZER_N_B(b):
         return a
