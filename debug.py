@@ -80,6 +80,41 @@ def test_N_9():
     d = int(input("Введите цифру: "))
     print("Результат:")
     print_Natural(SUB_NDN_N(n1, n2, d))
+    
+
+def test_N_10():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("Первая цифра частного от деления:")
+    print(DIV_NN_Dk(n1, n2))
+    
+
+def test_N_11():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("Частное от деления:")
+    print_Natural(DIV_NN_N(n1, n2))
+
+
+def test_N_12():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("Остаток от деления:")
+    print_Natural(MOD_NN_N(n1, n2))
+   
+   
+def test_N_13():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("НОД:")
+    print_Natural(GCF_NN_N(n1, n2))
+    
+
+def test_N_14():
+    n1 = input_Natural("Введите первое число: ")
+    n2 = input_Natural("Введите второе число: ")
+    print("НОК:")
+    print_Natural(LCM_NN_N(n1, n2))
 
 
 def main():
@@ -96,6 +131,11 @@ def main():
         print("7 = тест модуля N-7")
         print("8 = тест модуля N-8")
         print("9 = тест модуля N-9")
+        print("10 = тест модуля N-10")
+        print("11 = тест модуля N-11")
+        print("12 = тест модуля N-12")
+        print("12 = тест модуля N-13")
+        print("13 = тест модуля N-14")
         print("\n0 - выход")
         
         menu = int(input())
@@ -118,6 +158,16 @@ def main():
             test_N_8()
         elif menu == 9:
             test_N_9()
+        elif menu == 10:
+            test_N_10()
+        elif menu == 11:
+            test_N_11()
+        elif menu == 12:
+            test_N_12()
+        elif menu == 13:
+            test_N_13()
+        elif menu == 14:
+            test_N_14()
         
         elif menu == 0:
             pass
