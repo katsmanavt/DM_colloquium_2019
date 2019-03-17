@@ -12,7 +12,7 @@ class Natural (list):
     
     def del_0s(self):
         i = self.n
-        while self[i] == 0:
+        while i > 0 and self[i] == 0:
             self.pop()
             self.n -= 1
             i -= 1

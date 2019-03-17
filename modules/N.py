@@ -82,7 +82,11 @@ def SUB_NN_N (N1, N2):
                 n3[i] = n1[i] - n2[i]
             else:
                 n3[i] = n1[i] + 10 - n2[i]
-                n1[i+1] -= 1
+                k = i+1
+                while n1[k] == 0:
+                    n1[k] = 9
+                    k += 1
+                n1[k] -= 1
     elif COM_NN_D(n1, n2) == 1:
         assert False
         
@@ -169,7 +173,6 @@ def DIV_NN_Dk(N1, N2):
         r = A1
         d = 0
         while COM_NN_D(r, A2) != 1: # Пока r >= A2
-            print(r)
             r = SUB_NN_N(r, A2)
             d += 1
         
@@ -184,8 +187,8 @@ def DIV_NN_N(A, B):
     else:
         cA = A.copy()
         while COM_NN_D(cA, B) != 1:
-            cA = SUB_NN (cA, B) # Вычитаем из числа А число B
-            k = AD_1N_N(k)
+            cA = SUB_NN_N(cA, B) # Вычитаем из числа А число B
+            k = ADD_1N_N(k)
     return k
 
 
