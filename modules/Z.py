@@ -25,27 +25,30 @@ def MUL_ZM_Z(z):
     if num.b == 0:
         num.b = 1
     else:
-        nub.b = 0
+        num.b = 0
     return num
 
 
 # Z-4
 def TRANS_N_Z(x):
     z = Integer()
+    z.pop()
     z.b = 0
+    z.n = x.n
     i = 0
     while i <= x.n:
-        z[i] = x[i]
+        z.append(x[i])
         i += 1
     return z
 
 
-# Z=5
+# Z-5
 def TRANS_Z_N(x):
     if x.b == 0:
         ans = Natural(x.n, *[x[i] for i in range(x.n+1)])
     else:
         assert False
+    return ans
 
 
 # Z-6

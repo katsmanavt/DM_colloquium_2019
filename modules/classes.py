@@ -22,7 +22,6 @@ class Integer(Natural):
     def __init__(self, b = 0, n = 0, a1=0, *args):
         self.b = b
         args = list(args)
-        args.insert(0, a1)
         super().__init__(n, a1, *args)
     
     
