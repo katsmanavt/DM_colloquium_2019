@@ -65,7 +65,34 @@ def ADD_QQ_Q(q1, q2):
 
 
 # Q-6
+def SUB_QQ_Q(q1, q2):
+    q3 = q2.copy()
+    q3.m = MUL_ZM_Z(q3.m)
+    return ADD_QQ_Q(q1, q3)
+
 
 # Q-7
+def MUL_QQ_Q(q1, q2):
+    q3 = Rational()
+    q3.m = MUL_ZZ_Z(q1.m, q2.m)
+    q3.n = MUL_NN_N(q1.n, q2.n)
+    return q3
+
 
 # Q-8
+def DIV_QQ_Q(q1, q2):
+    q3 = Rational()
+    
+    n1 = TRANS_N_Z(q1.n)
+    n2 = TRANS_N_Z(q2.n)
+    
+    q3.m = MUL_ZZ_Z(q1.m, n2)
+    n3 = MUL_ZZ_Z(n1, q2.m)
+    
+    if POZ_Z_D(q3.n) == 1:
+        q3.m = MUL_ZM_Z(q3.m)
+        n3 = MUL_ZM_Z(n3)
+    
+    q3.n = TRANS_Z_N(n3)
+    
+    return q3
