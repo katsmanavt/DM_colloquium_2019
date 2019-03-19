@@ -30,7 +30,7 @@ class Integer(Natural):
 
 
 class Rational:
-    def __init__(self, m = Integer(), n = Natural()):
+    def __init__(self, m = Integer(), n = Natural(0, 1)):
         self.m = m
         self.n = n
     
