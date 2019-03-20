@@ -42,7 +42,14 @@ def test_Z_1():
 def test_Z_2():
     n = input_Integer("Введите число: ")
     print("Результат:")
-    print(POZ_Z_D(n))
+    res = POZ_Z_D(n)
+    if res == 2:
+        ans = 'Положительное'
+    elif res == 0:
+        ans = "Равное нулю"
+    else:
+        ans = "Отрицательное"
+    print(str(res)+' ('+ans+')')
 
 
 def test_Z_3():
@@ -80,7 +87,7 @@ def test_Z_7():
 def test_Z_8():
     n1 = input_Integer("Введите первое число: ")
     n2 = input_Integer("Введите второе число: ")
-    print("Разность:")
+    print("Произведение:")
     print_Integer(MUL_ZZ_Z(n1, n2))
     
     
@@ -94,7 +101,7 @@ def test_Z_9():
 def test_Z_10():
     n1 = input_Integer("Введите первое число: ")
     n2 = input_Integer("Введите второе число: ")
-    print("Частное от деления:")
+    print("Остаток от деления:")
     print_Integer(MOD_ZZ_Z(n1, n2))
     
 

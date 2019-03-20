@@ -63,7 +63,7 @@ def ADD_ZZ_Z(z1, z2):
         res.b = z1.b
     else:
         # если числа равны по модулю, то ответ 0
-        if COM_NN_D(n1, n2):
+        if COM_NN_D(n1, n2) == 0:
             res = Integer()
         # иначе вычитаем модули и определяем знак
         elif COM_NN_D(n1, n2) == 2:
@@ -91,12 +91,12 @@ def MUL_ZZ_Z(z1, z2):
     n2 = ABS_Z_N(z2)
     
     #  Числа разного знака, ни одно из них не 0
-    t1 = POZ_Z_D(n1)
-    t2 = POZ_Z_D(n2)
+    t1 = POZ_Z_D(z1)
+    t2 = POZ_Z_D(z2)
     if (t1 != t2) and (t1*t2 != 0):
         k = 1
     
-    z1 = TRANS_N_Z(MUL_NN_N(n1, n2))
+    z3 = TRANS_N_Z(MUL_NN_N(n1, n2))
     if k == 1:
         z3 = MUL_ZM_Z(z3)
     
