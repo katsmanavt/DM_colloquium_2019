@@ -8,6 +8,8 @@ def main():
         print("Команды:")
         print("1 - тест модулей N")
         print("2 - тест модулей Z")
+        print("3 - тест модулей Q")
+        # print("4 - тест модулей P")
         print("0 - выход")
         
         menu = int(input())
@@ -16,6 +18,10 @@ def main():
             debug_N.main()
         elif menu == 2:
             debug_Z.main()
+        elif menu == 3:
+            debug_Q.main()
+        elif menu == 4:
+            debug_P.main()
         elif menu == 0:
             pass
         else:
@@ -24,4 +30,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-        
