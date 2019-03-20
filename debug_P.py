@@ -5,6 +5,116 @@ from debug_Z import *
 from debug_Q import *
 
 
+def input_Polinomial(message=''):
+    if message:
+        print(message)
+    
+    m = int(input("Введите степень многочлена: "))
+    p = Polinomial(m)
+    p.pop()
+    for i in range(m+1):
+        p.append(input_Rational("Введите коэффициент "+str(p.m-i)+":"))
+    p.reverse()
+    return p
+
+
+def print_Polinomial(P, end='\n'):
+    p = P.copy()
+    p.reverse()
+    for i in range(p.m):
+        print('(', end='')
+        print_Rational(p[i], end='')
+        print(")x^"+str(i), end='')
+        print(' + ', end='')
+    print_Rational(p[p.m], end=end)
+    
+    
+def test_P_1():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("Сумма:")
+    print_Polinomial(ADD_PP_P(p1, p2))
+
+
+def test_P_2():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("Разность:")
+    print_Polinomial(SUB_PP_P(p1, p2))
+
+
+def test_P_3():
+    p = input_Polinomial("Введите многочлен:")
+    q = input_Rational("Введите рациональное число:")
+    print("Произведение:")
+    print_Polinomial(MUL_PQ_P(p1, p2))
+
+
+def test_P_4():
+    p = input_Polinomial("Введите многочлен:")
+    k = int(input("Введите тепень k: "))
+    print("Многочлен в степени k:")
+    print_Polinomial(MUL_PP_P(p1, p2))
+
+
+def test_P_5():
+    p = input_Polinomial("Введите многочлен:")
+    print("Старший коэффициент многочлена: ", end='')
+    print_Rational(LED_P_Q(p))
+    
+    
+def test_P_6():
+    p = input_Polinomial("Введите многочлен:")
+    print("Степень многочлена: ", end='')
+    print(DEG_P_N(p))
+
+
+def test_P_7():
+    p = input_Polinomial("Введите многочлен:") 
+    print("НОК числителей/НОД знаменателей:")
+    print_Rational(FAC_P_Q(p))
+    
+
+def test_P_8():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("Произведение:")
+    print_Polinomial(MUL_PP_P(p1, p2))
+    
+    
+def test_P_9():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("Частное от деления:")
+    print_Polinomial(DIV_PP_P(p1, p2))
+
+
+def test_P_10():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("Остаток от деления:")
+    print_Polinomial(MOD_PP_P(p1, p2))
+
+
+def test_P_11():
+    p1 = input_Polinomial("Введите первый многочлен:")
+    p2 = input_Polinomial("Введите второй многочлен:")
+    print("НОД:")
+    print_Polinomial(GCF_PP_P(p1, p2))
+    
+
+def test_P_12():
+    p = input_Polinomial("Введите многочлен:") 
+    print("Производная:")
+    print_Polinomial(DER_P_P(p))
+
+
+def test_P_13():
+    p = input_Polinomial("Введите многочлен:") 
+    print("Сокращение кратных корней:")
+    print_Polinomial(NMR_P_P(p))
+    
+
 def main():
     menu = 1
     while menu:

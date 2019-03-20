@@ -5,7 +5,8 @@ from debug_Z import *
 
 
 def input_Rational(message=''):
-    print(message)
+    if message:
+        print(message)
     m = input_Integer("Знаменатель: ")
     n = input_Natural("Числитель: ")
     q = Rational(m, n)

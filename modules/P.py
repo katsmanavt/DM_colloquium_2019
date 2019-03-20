@@ -9,6 +9,7 @@ def ADD_PP_P(c1, c2):
     m1 = c1.m
     m2 = c2.m
     c = Polinomial()
+    c.pop()
     
     if m1 > m2:
         m1, m2 = m2, m1
@@ -17,9 +18,9 @@ def ADD_PP_P(c1, c2):
     i = 0
     while i <= m2:
         if i <= m1:
-            c[i] = ADD_QQ_Q(c1[i], c2[i])
+            c.append(ADD_QQ_Q(c1[i], c2[i]))
         else:
-            c[i] = c2[i]
+            c.append(c2[i])
         i += 1
     
     c.m = m2
@@ -84,6 +85,7 @@ def DEG_P_N(P):
 
 # P-7
 def FAC_P_Q(p):
+    q = Rational()
     if p.n != 0:
         prevk = ABS_Z_N(p[0].m.copy())
         prevd = ABS_Z_N(p[0].n.copy())

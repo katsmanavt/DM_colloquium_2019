@@ -1,4 +1,4 @@
-import debug_N, debug_Z
+import debug_N, debug_Z, debug_Q, debug_P
 
 
 def main():
