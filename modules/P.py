@@ -113,12 +113,88 @@ def MUL_PP_P(c1, c2):
 
 
 # P-9
+def DIV_PP_P(p1, p2):
+    if p2.m == 0 and p2[0] == 0:
+        assert False
+    else:
+        n1 = p1.copy()
+        n2 = p2.copy()
+        n3 = Polinomial()
+        if DEG_P_N(n1) >= DEG_P_N(n2):
+            while DEG_P_N(n1) >= DEG_P_N(n2):
+                if n1[n1.m].b == n2[n1.m].b:
+                    n1[n1.m].b = 0
+                else:
+                    n1[n1.m].b = 1
+                    
+                q = Rational(TRANS_N_Z(n1[n1.m]), ABS_Z_N(n2[n1.m]))
+                sub = MUL_Pxk_P(n2, n1.m - n2.m)
+                
+                n1 = SUB_PP_P(n1, MUL_PQ_P(sub, q))
+                n3[n1.m-n2.m] = ADD_QQ_Q(n3[n1.m-n2.m], q)
+                n1.m -= 1
+        return n3
+
 
 # P-10
-
+def MOD_PP_P(c1, c2):
+    if p2.m == 0 and p2[0] == 0:
+        assert False
+    else:
+        if c1.m < c2.m:
+            r = c1.copy()
+        else:
+            q = DIV_PP_P(c1, c2)
+            c3 = MUL_PP_P(c2, q)
+            r = SUB_PP_P(c1, c3)
+    
+    
 # P-11
-
+def GCF_PP_P(A, B):
+    a = A.copy()
+    b = b.copy()
+    nod = Polinomial()
+    nod.pop()
+    while a.m != 0 or b.m != 0:
+        if a.m > b.m:
+            a = MOD_PP_P(a, b)
+            a.m = DEG_P_N(a)
+        else:
+            b = MOD_PP_P(b, a)
+            b.m = DEG_P_N(b)
+    
+    if b.m != 0:
+        nod = a.copy()
+    else:
+        nod = b.copy()
+    nod.m = DEG_P_N(nod)
+    
+    return nod
+    
 # P-12
+def DER_P_P(C):
+    m = DEG_P_N(C)
+    
+    P = Polinomial()
+    P.pop()
+    I = Integer()
+    while i < m:
+        I = TRANS_N_Z(ADD_1N_N(TRANS_Z_N(I)))
+        z = TRANS_Z_Q(I)
+        # вычисление производной
+        P[i] = MUL_QQ_Q(C[i+1], z)
+        i += 1
+        
+    P.m = DEG_P_N(P)
+    return P
+
 
 # P-13
-
+def NMR_P_P(f):
+    Q = Polinomial(1, 1, 1)
+    while Q != 0:
+        p = DER_P_P(f)
+        Q = GCF_PP_P(f, p)
+        if Q != 0:
+            f = DIV_PP_P(f, Q)
+    return f

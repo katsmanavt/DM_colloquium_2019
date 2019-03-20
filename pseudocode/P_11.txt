@@ -2,26 +2,24 @@
 // Ссылается на - MOD_PP_P, DEG_P_N
 
 функция GCF_PP_P(многочлены A, B):
-	C = A.копия
-	D = B.копия
+	a = A.копия
+	b = B.копия
 	nod = многочлен 
-	ЦИКЛ ПОКА (C.m !=0 ИЛИ D.m!=0): 
-		ЕСЛИ (C.m > D.m): 
-			C = MOD_PP_P(C,D) 
-			C.m = DEG_P_N(C) 
-		ИНАЧЕ: 
-			D := MOD_PP_P(D,C) 
-			D.m := DEG_P_N(D) 
+	ЦИКЛ ПОКА (a.m !=0 ИЛИ b.m!=0): 
+		ЕСЛИ (a.m > b.m)
+			a = MOD_PP_P(a,b) 
+			a.m = DEG_P_N(a) 
+		ИНАЧЕ 
+			b := MOD_PP_P(b, a) 
+			b.m := DEG_P_N(b) 
 		КЕ
 	КЦ
-	ЕСЛИ (D.m != 0): 
-		ЦИКЛ ПО i от 0 до C.m: 
-			nod[i] := C[i] 
-		КЦ
-	ИНАЧЕ: 
-		ЦИКЛ ПО i от 0 до D.m:
-			nod[i] := D[i]
-		КЦ
+	ЕСЛИ (b.m != 0): 
+		nod := a.копия
+	ИНАЧЕ
+		nod := b.копия
 	ке
+	nod.m := DEG_P_N(nod)
+	
 	Вернуть nod
 кф
