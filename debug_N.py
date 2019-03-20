@@ -14,12 +14,12 @@ def input_Natural(message=''):
     return n
     
     
-def print_Natural(n):
+def print_Natural(n, end='\n'):
     num = n.copy()
     num.reverse()
     for i in range(num.n+1):
         print(num[i], end='')
-    print()
+    print(end, end='')
 
 
 def test_N_1():

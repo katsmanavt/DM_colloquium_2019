@@ -23,14 +23,14 @@ def input_Integer(message=''):
     return n
 
 
-def print_Integer(n):
+def print_Integer(n, end='\n'):
     num = n.copy()
     num.reverse()
     if num.b == 1:
         print('-', end='')
     for i in range(num.n+1):
         print(num[i], end='')
-    print()
+    print(end, end='')
     
     
 def test_Z_1():

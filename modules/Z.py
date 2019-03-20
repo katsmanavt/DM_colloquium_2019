@@ -118,7 +118,7 @@ def DIV_ZZ_Z(z1, z2):
         else:
             # Иначе проверяем, не равно ли оно по модулю делителю
             if (COM_NN_D(n1, n2)):
-                g = ADD_1N_N
+                g = ADD_1N_N(g)
             r = TRANS_N_Z(g)
             r = MUL_ZM_Z(r)
     else:
