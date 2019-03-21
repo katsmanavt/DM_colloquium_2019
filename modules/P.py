@@ -164,9 +164,10 @@ def MOD_PP_P(p1, p2):
 def GCF_PP_P(A, B):
     a = A.copy()
     b = B.copy()
-    nod = Polinomial()
-    nod.pop()
-    while a.m != 0 or b.m != 0:
+    while not ((a.m == 0 and a[0].m.n == 0 and a[0].m[0] == 0) \
+                                or \
+               (b.m == 0 and b[0].m.n == 0 and b[0].m[0] == 0)):
+        
         if a.m > b.m:
             a = MOD_PP_P(a, b)
             a.m = DEG_P_N(a)
@@ -174,10 +175,11 @@ def GCF_PP_P(A, B):
             b = MOD_PP_P(b, a)
             b.m = DEG_P_N(b)
     
-    if b.m != 0:
+    if (b.m == 0 and b[0].m.n == 0 and b[0].m[0] == 0):
         nod = a.copy()
     else:
         nod = b.copy()
+        
     nod.m = DEG_P_N(nod)
     
     return nod
@@ -190,11 +192,12 @@ def DER_P_P(C):
     P = Polinomial()
     P.pop()
     I = Integer()
+    i = 0
     while i < m:
         I = TRANS_N_Z(ADD_1N_N(TRANS_Z_N(I)))
         z = TRANS_Z_Q(I)
         # вычисление производной
-        P[i] = MUL_QQ_Q(C[i+1], z)
+        P.append(MUL_QQ_Q(C[i+1], z))
         i += 1
         
     P.m = DEG_P_N(P)
@@ -204,9 +207,8 @@ def DER_P_P(C):
 # P-13
 def NMR_P_P(f):
     Q = Polinomial(1, 1, 1)
-    while Q != 0:
+    while Q.m != 0 or Q[0].m.n != 0 or Q[0].n.m != 0:
         p = DER_P_P(f)
         Q = GCF_PP_P(f, p)
-        if Q != 0:
-            f = DIV_PP_P(f, Q)
+        f = DIV_PP_P(f, Q)
     return f

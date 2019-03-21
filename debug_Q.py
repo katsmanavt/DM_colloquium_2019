@@ -7,8 +7,8 @@ from debug_Z import *
 def input_Rational(message=''):
     if message:
         print(message)
-    m = input_Integer("Знаменатель: ")
-    n = input_Natural("Числитель: ")
+    m = input_Integer("Числитель: ")
+    n = input_Natural("Знаменатель: ")
     q = Rational(m, n)
     return q
 
