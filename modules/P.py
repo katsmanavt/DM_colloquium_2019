@@ -32,7 +32,7 @@ def SUB_PP_P(C1, C2):
     c1 = C1.copy()
     c2 = C2.copy()
     mul = Rational (
-        Integer(0, -1),
+        Integer(1, 0, 1),
         Natural(0, 1)
     )
     c2 = MUL_PQ_P(c2, mul)
@@ -45,26 +45,28 @@ def SUB_PP_P(C1, C2):
 # P-3
 def MUL_PQ_P(C, z):
     m = DEG_P_N(C)
-    P = Polinomial
+    p = Polinomial()
+    p.pop()
     
     for i in range(m+1):
         if C[i] == 0:
-            P[i] = 0
+            p.append(0)
         else:
-            P[i] = MUL_QQ_Q(C[i], z)
-    
-    P.m = m
-    return P
+            p.append(MUL_QQ_Q(C[i], z))
+    p.m = m
+    return p
     
     
 # P-4
 def MUL_Pxk_P(a, k):
+    m = a.m
     c = a.copy()
+    c.extend([Rational() for i in range(k)])
     if c.m != 0 or c[0] != 0:
         for i in range(m, -1, -1):
             c[i+k] = c[i]
-        for i in range(k+1):
-            c[i] = 0
+        for i in range(k):
+            c[i] = Rational()
         c.m = c.m + k
     return c
 
@@ -77,7 +79,7 @@ def LED_P_Q(C):
 # P-6
 def DEG_P_N(P):
     i = P.m
-    while P[i] != 0 and i > 0:
+    while P[i].m.n == 0 and P[i].m[0] == 0 and i > 0:
         i -= 1
     P.m = i 
     return i
@@ -86,17 +88,17 @@ def DEG_P_N(P):
 # P-7
 def FAC_P_Q(p):
     q = Rational()
-    if p.n != 0:
+    if p.m != 0:
         prevk = ABS_Z_N(p[0].m.copy())
         prevd = ABS_Z_N(p[0].n.copy())
-        s = p[0]
-        for i in range(1, n+1):
+        s = p[0].m.copy()
+        for i in range(1, p.m + 1):
             prevk = LCM_NN_N(prevk, ABS_Z_N(p[i].m))
             prevd = LCM_NN_N(prevd, p[i].n)
             if p[i] != 0:
                 s = MUL_ZZ_Z(s, p[i].m)
-        q.m = TRANS_N_Z(DIV_NN_N(ABS_Z_N(s), prev_k))
-        q.n = prev_d
+        q.m = TRANS_N_Z(DIV_NN_N(ABS_Z_N(s), prevk))
+        q.n = prevd
     else:
         q.m = p[0].m
         q.n = p[0].n
@@ -121,15 +123,16 @@ def DIV_PP_P(p1, p2):
     else:
         n1 = p1.copy()
         n2 = p2.copy()
-        n3 = Polinomial()
+        n3 = p1.copy()
+        
         if DEG_P_N(n1) >= DEG_P_N(n2):
             while DEG_P_N(n1) >= DEG_P_N(n2):
-                if n1[n1.m].b == n2[n1.m].b:
-                    n1[n1.m].b = 0
+                if n1[n1.m].m.b == n2[n1.m].m.b:
+                    n1[n1.m].m.b = 0
                 else:
-                    n1[n1.m].b = 1
+                    n1[n1.m].m.b = 1
                     
-                q = Rational(TRANS_N_Z(n1[n1.m]), ABS_Z_N(n2[n1.m]))
+                q = DIV_QQ_Q(n1[n1.m], n2[n1.m])
                 sub = MUL_Pxk_P(n2, n1.m - n2.m)
                 
                 n1 = SUB_PP_P(n1, MUL_PQ_P(sub, q))

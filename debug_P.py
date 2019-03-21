@@ -24,7 +24,7 @@ def print_Polinomial(P, end='\n'):
     for i in range(p.m):
         print('(', end='')
         print_Rational(p[i], end='')
-        print(")x^"+str(i), end='')
+        print(")x^"+str(p.m-i), end='')
         print(' + ', end='')
     print_Rational(p[p.m], end=end)
     
@@ -47,14 +47,14 @@ def test_P_3():
     p = input_Polinomial("Введите многочлен:")
     q = input_Rational("Введите рациональное число:")
     print("Произведение:")
-    print_Polinomial(MUL_PQ_P(p1, p2))
+    print_Polinomial(MUL_PQ_P(p, q))
 
 
 def test_P_4():
     p = input_Polinomial("Введите многочлен:")
     k = int(input("Введите тепень k: "))
     print("Многочлен в степени k:")
-    print_Polinomial(MUL_PP_P(p1, p2))
+    print_Polinomial(MUL_Pxk_P(p, k))
 
 
 def test_P_5():
@@ -71,7 +71,7 @@ def test_P_6():
 
 def test_P_7():
     p = input_Polinomial("Введите многочлен:") 
-    print("НОК числителей/НОД знаменателей:")
+    print("НОД числителей/НОК знаменателей:")
     print_Rational(FAC_P_Q(p))
     
 

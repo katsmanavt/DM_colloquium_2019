@@ -40,10 +40,10 @@ class Rational:
         
 
 class Polinomial (list):
-    def __init__ (self, m = 0, a1=0, *args):
+    def __init__ (self, m = 0, a0=Rational(), *args):
         self.m = m
         args = list(args)
-        args.insert(0, a1)
+        args.insert(0, a0)
         super().__init__(args)
         
     
