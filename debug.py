@@ -9,7 +9,7 @@ def main():
         print("1 - тест модулей N")
         print("2 - тест модулей Z")
         print("3 - тест модулей Q")
-        # print("4 - тест модулей P")
+        print("4 - тест модулей P")
         print("0 - выход")
         
         menu = int(input())

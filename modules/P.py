@@ -78,8 +78,9 @@ def LED_P_Q(C):
 
 # P-6
 def DEG_P_N(P):
-    i = P.m
+    i = len(P)-1
     while P[i].m.n == 0 and P[i].m[0] == 0 and i > 0:
+        P.pop()
         i -= 1
     P.m = i 
     return i
@@ -123,41 +124,46 @@ def DIV_PP_P(p1, p2):
     else:
         n1 = p1.copy()
         n2 = p2.copy()
-        n3 = p1.copy()
+        n3 = Polinomial()
         
         if DEG_P_N(n1) >= DEG_P_N(n2):
-            while DEG_P_N(n1) >= DEG_P_N(n2):
-                if n1[n1.m].m.b == n2[n1.m].m.b:
-                    n1[n1.m].m.b = 0
-                else:
-                    n1[n1.m].m.b = 1
-                    
-                q = DIV_QQ_Q(n1[n1.m], n2[n1.m])
-                sub = MUL_Pxk_P(n2, n1.m - n2.m)
-                
-                n1 = SUB_PP_P(n1, MUL_PQ_P(sub, q))
-                n3[n1.m-n2.m] = ADD_QQ_Q(n3[n1.m-n2.m], q)
-                n1.m -= 1
+            n3.pop()
+        
+        while DEG_P_N(n1) >= DEG_P_N(n2):            
+            q = DIV_QQ_Q(n1[n1.m], n2[n2.m])
+            sub = MUL_Pxk_P(n2, n1.m - n2.m)
+            sub = MUL_PQ_P(sub, q)
+            
+            n1 = SUB_PP_P(n1, sub)
+            
+            n3.append(q)
+            
+        n3.reverse()
+        n3.m = DEG_P_N(n3)
+            
         return n3
 
 
 # P-10
-def MOD_PP_P(c1, c2):
+def MOD_PP_P(p1, p2):
     if p2.m == 0 and p2[0] == 0:
         assert False
     else:
+        c1 = p1.copy()
+        c2 = p2.copy()
         if c1.m < c2.m:
             r = c1.copy()
         else:
             q = DIV_PP_P(c1, c2)
             c3 = MUL_PP_P(c2, q)
             r = SUB_PP_P(c1, c3)
+        return r
     
     
 # P-11
 def GCF_PP_P(A, B):
     a = A.copy()
-    b = b.copy()
+    b = B.copy()
     nod = Polinomial()
     nod.pop()
     while a.m != 0 or b.m != 0:
@@ -176,6 +182,7 @@ def GCF_PP_P(A, B):
     
     return nod
     
+
 # P-12
 def DER_P_P(C):
     m = DEG_P_N(C)

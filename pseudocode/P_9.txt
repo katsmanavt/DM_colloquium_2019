@@ -9,23 +9,22 @@
 	ИНАЧЕ
 		n1 := p1
 		n2 := p2
-		ЕСЛИ DEG_P_N(n1) < DEG_P_N(n2) ТО
-			n3 := многочлен(0)
-		ИНАЧЕ
-			ЦИКЛ ПОКА DEG_P_N(n1)>=DEG_P_N(n2)
-				ЕСЛИ n1[n1.m].b = n2[n1.m].b
-					n1[n1.m].b := 0
-				ИНАЧЕ
-					n1[n1.m].b := 1
-				КЕ
-				q := дробь(TRANS_Z_N(n1[n1.m]), ABS_Z_N(n2[n1.m]))
-				sub := MUL_Pxk_P(n2, n1.m - n2.m)
-				
-				n1 := SUB_PP_P(n1, MUL_PQ_P(sub, q))
-				n3[n1.m-n2.m] := ADD_QQ_Q(n3[n1.m-n2.m], q)
-				n1.m := n1.m - 1;
-			КЦ
-		КЕ
+		n3 := многочлен(0)
+		
+		ЦИКЛ ПОКА DEG_P_N(n1)>=DEG_P_N(n2)
+			ЕСЛИ n1[n1.m].b = n2[n1.m].b
+				n1[n1.m].b := 0
+			ИНАЧЕ
+				n1[n1.m].b := 1
+			КЕ
+			
+			q := DIV_QQ_Q(n1[n1.m], n2[n2.m])
+			sub := MUL_Pxk_P(n2, n1.m - n2.m)
+			
+			n1 := SUB_PP_P(n1, MUL_PQ_P(sub, q))
+			n3[n1.m-n2.m] := ADD_QQ_Q(n3[n1.m-n2.m], q)
+			n1.m := n1.m - 1
+		КЦ
 		ВОЗВРАТ n3
 	КЕ
 	
