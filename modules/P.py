@@ -129,7 +129,7 @@ def DIV_PP_P(p1, p2):
         if DEG_P_N(n1) >= DEG_P_N(n2):
             n3.pop()
         
-        while DEG_P_N(n1) >= DEG_P_N(n2):            
+        while DEG_P_N(n1) >= DEG_P_N(n2) and (n1.m != 0 or n1[0].m.n != 0 or n1[0].m[0] != 0):            
             q = DIV_QQ_Q(n1[n1.m], n2[n2.m])
             sub = MUL_Pxk_P(n2, n1.m - n2.m)
             sub = MUL_PQ_P(sub, q)
@@ -207,7 +207,7 @@ def DER_P_P(C):
 # P-13
 def NMR_P_P(f):
     Q = Polinomial(1, 1, 1)
-    while Q.m != 0 or Q[0].m.n != 0 or Q[0].n.m != 0:
+    while Q.m != 0 or Q[0].m.n != 0 or Q[0].m[0] != 0:
         p = DER_P_P(f)
         Q = GCF_PP_P(f, p)
         f = DIV_PP_P(f, Q)
