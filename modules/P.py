@@ -79,7 +79,7 @@ def LED_P_Q(C):
 # P-6
 def DEG_P_N(P):
     i = len(P)-1
-    while P[i].m.n == 0 and P[i].m[0] == 0 and i > 0:
+    while i > 0 and P[i].m.n == 0 and P[i].m[0] == 0:
         P.pop()
         i -= 1
     P.m = i 
@@ -119,26 +119,23 @@ def MUL_PP_P(c1, c2):
 
 # P-9
 def DIV_PP_P(p1, p2):
-    if p2.m == 0 and p2[0] == 0:
+    if p2.m == 0 and p2[0].m.n == 0 and p2[0].m[0] == 0:
         assert False
     else:
         n1 = p1.copy()
         n2 = p2.copy()
-        n3 = Polinomial()
+        n3 = Polinomial(p1.m, *[Rational() for i in range(p1.m+1)])
         
-        if DEG_P_N(n1) >= DEG_P_N(n2):
-            n3.pop()
-        
-        while DEG_P_N(n1) >= DEG_P_N(n2):            
+        while DEG_P_N(n1) >= DEG_P_N(n2) and (n1.m != 0 or n1[0].m.n != 0 or n1[0].m[0] != 0):
+            m = n1.m - n2.m
             q = DIV_QQ_Q(n1[n1.m], n2[n2.m])
-            sub = MUL_Pxk_P(n2, n1.m - n2.m)
+            sub = MUL_Pxk_P(n2, m)
             sub = MUL_PQ_P(sub, q)
             
             n1 = SUB_PP_P(n1, sub)
             
-            n3.append(q)
+            n3[m] = q
             
-        n3.reverse()
         n3.m = DEG_P_N(n3)
             
         return n3
@@ -146,7 +143,7 @@ def DIV_PP_P(p1, p2):
 
 # P-10
 def MOD_PP_P(p1, p2):
-    if p2.m == 0 and p2[0] == 0:
+    if p2.m == 0 and p2[0].m.n == 0 and p2[0].m[0] == 0:
         assert False
     else:
         c1 = p1.copy()
@@ -179,8 +176,12 @@ def GCF_PP_P(A, B):
         nod = a.copy()
     else:
         nod = b.copy()
-        
+    
+    
     nod.m = DEG_P_N(nod)
+    # 1/nod[nod.m]
+    q = DIV_QQ_Q(Rational(Integer(0, 0, 1)), nod[nod.m])
+    nod = MUL_PQ_P(nod, q)
     
     return nod
     
@@ -207,7 +208,7 @@ def DER_P_P(C):
 # P-13
 def NMR_P_P(f):
     Q = Polinomial(1, 1, 1)
-    while Q.m != 0 or Q[0].m.n != 0 or Q[0].n.m != 0:
+    while Q.m != 0 or Q[0].m.n != 0:
         p = DER_P_P(f)
         Q = GCF_PP_P(f, p)
         f = DIV_PP_P(f, Q)

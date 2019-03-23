@@ -110,7 +110,7 @@ def test_P_12():
 
 
 def test_P_13():
-    p = input_Polinomial("Введите многочлен:") 
+    p = input_Polinomial("Введите многочлен:")
     print("Сокращение кратных корней:")
     print_Polinomial(NMR_P_P(p))
     
